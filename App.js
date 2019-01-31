@@ -1,21 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { PrimaryTextStyles, NeutralTextStyles, ViewStyles } from './components/Styles';
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <ViewStyles>
+        <NeutralTextStyles>
+          Hello!&nbsp;
+          <NeutralTextStyles>We&apos;re glad&nbsp;</NeutralTextStyles>
+          <PrimaryTextStyles>you&apos;re&nbsp;</PrimaryTextStyles>
+          <NeutralTextStyles>here.</NeutralTextStyles>
+        </NeutralTextStyles>
+        <NeutralTextStyles>Ready to start?</NeutralTextStyles>
+        <TouchableOpacity style={ { backgroundColor: '#9446ed' } }>
+          <PrimaryTextStyles>Begin here</PrimaryTextStyles>
+        </TouchableOpacity>
+      </ViewStyles>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
