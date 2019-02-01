@@ -9,6 +9,7 @@ The purpose of this app is:
 ### Tools
 
 - React Native
+- React Navigation
 - Styled Components
 
 ### React Native Setup
