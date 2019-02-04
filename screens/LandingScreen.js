@@ -25,8 +25,8 @@ class LandingScreen extends React.Component {
           </NeutralTextStyles>
 
           <NeutralTextStyles>Ready to start?</NeutralTextStyles>
-          <CustomButton navigateTo={ navigateToCategoryOne } copyContent="Begin here" priority="primary" />
-          <CustomButton navigateTo={ navigateToFAQ } copyContent="FAQ" priority="secondary" />
+          <CustomButton buttonFunction={ navigateToCategoryOne } copyContent="Begin here" priority="primary" />
+          <CustomButton buttonFunction={ navigateToFAQ } copyContent="FAQ" priority="secondary" />
         </View>
 
       </ViewStyles>

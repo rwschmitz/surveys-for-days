@@ -12,6 +12,10 @@ The purpose of this app is:
 - React Navigation
 - Styled Components
 
+### Libraries / Packages
+
+- [React Native Simple Radio Button](https://github.com/moschan/react-native-simple-radio-button)
+
 ### React Native Setup
 
 - `npm install -g expo-cli`

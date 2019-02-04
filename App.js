@@ -15,12 +15,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-function storeHighScore(userId, score) {
-  firebase.database().ref('users/').set({
-    highscore: score
-  });
-}
-
 const AppNavigator = createStackNavigator(
 {
   Home: LandingScreen,

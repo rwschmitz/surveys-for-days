@@ -4,7 +4,7 @@ import { ButtonTextStyles, CustomButtonStyles } from './Styles';
 
 class CustomButton extends React.Component {
   render() {
-    const { copyContent, priority } = this.props;
+    const { buttonFunction, copyContent, priority } = this.props;
     let selectedBackgroundColor;
     let selectedColor;
 
@@ -36,7 +36,7 @@ class CustomButton extends React.Component {
         break;
     }
     return (
-      <CustomButtonStyles onPress={ () => this.props.navigateTo() } selectedBackgroundColor={ selectedBackgroundColor }>
+      <CustomButtonStyles onPress={ buttonFunction } selectedBackgroundColor={ selectedBackgroundColor }>
         <ButtonTextStyles selectedColor={ selectedColor }>
           { copyContent }
         </ButtonTextStyles>
@@ -48,6 +48,7 @@ class CustomButton extends React.Component {
 export default CustomButton;
 
 CustomButton.propTypes = {
+  buttonFunction: PropTypes.func.isRequired,
   copyContent: PropTypes.string.isRequired,
   priority: PropTypes.string.isRequired
 }
