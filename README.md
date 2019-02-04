@@ -22,6 +22,12 @@ The purpose of this app is:
 
 ## Notes
 
+### Google Firebase
+
+- Ensure when setting up rules, the rules are setup up for Realtime Database instead of Google Firestore, assuming you want a Realtime Database.
+  - Different rules are written for different database types.
+  - [Github Issue #12](https://github.com/firebase/friendlychat-ios/issues/12)
+
 ### Expo
 
 - As of 1/31/2019, npm only works with the following releases of Node.js:  4, 6, 7, 8, and 9.

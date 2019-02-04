@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-// import firebase from 'react-native-firebase';
 import CustomButton from '../components/CustomButton';
 import { NeutralTextStyles, PrimaryTextStyles, ViewStyles } from '../components/Styles';
 
@@ -14,15 +13,6 @@ class LandingScreen extends React.Component {
     const navigateToCategoryOne = () => {
       this.props.navigation.navigate('CategoryOne')
     }
-
-    // firebase.auth()
-    // .signInAnonymously()
-    // .then(credential => {
-    //   if (credential) {
-    //     console.log('default app user ->', credential.user.toJSON());
-    //   }
-    // });
-
 
     return (
       <ViewStyles alignItems="center">
