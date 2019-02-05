@@ -1,5 +1,5 @@
 import React from 'react';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 import RadioForm from 'react-native-simple-radio-button';
 import CustomButton from '../components/CustomButton';
 import { NeutralTextStyles, ViewStyles } from '../components/Styles';
@@ -22,17 +22,17 @@ class CategoryOneScreen extends React.Component {
       { label: 5, value: 5 },
     ];
 
-    const storeAnswerToQ1 = (userSelectedAnswer) => {
-      firebase.database().ref(`Question 1/`).set({
-        userSelectedAnswer
-      });
-    }
+    // const storeAnswerToQ1 = (userSelectedAnswer) => {
+    //   firebase.database().ref(`Question 1/`).set({
+    //     userSelectedAnswer
+    //   });
+    // }
 
-    const storeAnswerToQ2 = (userSelectedAnswer) => {
-      firebase.database().ref(`Question 2/`).set({
-        userSelectedAnswer
-      });
-    }
+    // const storeAnswerToQ2 = (userSelectedAnswer) => {
+    //   firebase.database().ref(`Question 2/`).set({
+    //     userSelectedAnswer
+    //   });
+    // }
 
     return (
       <ViewStyles alignItems="center">
@@ -49,7 +49,7 @@ class CategoryOneScreen extends React.Component {
           selectedButtonColor='#9446ed'
         />
 
-        <CustomButton buttonFunction={ () => storeAnswerToQ1(answer1) } copyContent="Submit" priority="primary" />
+        {/* <CustomButton buttonFunction={ () => storeAnswerToQ1(answer1) } copyContent="Submit" priority="primary" /> */}
 
         {/* Question spacer */}
 
@@ -66,7 +66,7 @@ class CategoryOneScreen extends React.Component {
           selectedButtonColor='#9446ed'
         />
 
-        <CustomButton buttonFunction={ () => storeAnswerToQ2(answer2) } copyContent="Submit" priority="primary" />
+        {/* <CustomButton buttonFunction={ () => storeAnswerToQ2(answer2) } copyContent="Submit" priority="primary" /> */}
       </ViewStyles>
     );
   }
