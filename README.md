@@ -8,6 +8,7 @@ The purpose of this app is:
 
 ### Tools
 
+- Google Firebase
 - React Native
 - React Navigation
 - Styled Components
@@ -23,6 +24,12 @@ The purpose of this app is:
 - `cd [yourProjectHere]`
 - `yarn start`
 - Start coding!
+
+### iOS Development Environment
+
+- `expo eject` from Expo.
+- `expo start` to setup the development server.
+- Build the project in xCode and the app should open on your target device (e.g., your iPhone).
 
 ## Notes
 
@@ -45,7 +52,22 @@ The purpose of this app is:
   - Different rules are written for different database types.
   - [Github Issue #12](https://github.com/firebase/friendlychat-ios/issues/12)
 
+- For anonymous authentication, ensure anonymous authentication is actually enabled.
+  - Go to the Google Firebase console.
+  - Go to the authentication section, navigtating there from the left side menu.
+  - In the authentication section, go to the "Sign-in method" tab.
+  - Enable anonymous authentication.
+
 ---
+
+### React Native Firebase
+
+- Ensure appropriate Pods are installed.
+  - `pod 'Firebase/Core', '~> 5.15.0'`
+  - `pod 'Firebase/Auth', '~> 5.15.0'`
+- After installing the necessary pods, **within xCode**, you need to be opening the `.xcworkspace` file instead of the `.xcproj` file.
+- Ensure an update to date GoogleService-Info.plist is installed at the correct location.
+  - Location: ./ios/
 
 ### Expo
 
