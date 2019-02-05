@@ -6,19 +6,22 @@ import { NeutralTextStyles, PrimaryTextStyles, ViewStyles } from '../components/
 class LandingScreen extends React.Component {
   render() {
 
+    const { screenProps: { currentUserEmail, logout }, navigation: { navigate } }= this.props;
+
     const navigateToFAQ = () => {
-      this.props.navigation.navigate('FAQ')
+      navigate('FAQ')
     }
 
     const navigateToCategoryOne = () => {
-      this.props.navigation.navigate('CategoryOne')
+      navigate('CategoryOne')
     }
+
 
     return (
       <ViewStyles alignItems="center">
         <View>
           <NeutralTextStyles>
-            Hello!&nbsp;
+            {`Hello ${currentUserEmail}! `}
             <NeutralTextStyles>We&apos;re glad&nbsp;</NeutralTextStyles>
             <PrimaryTextStyles>you&apos;re&nbsp;</PrimaryTextStyles>
             <NeutralTextStyles>here.</NeutralTextStyles>
@@ -27,6 +30,7 @@ class LandingScreen extends React.Component {
           <NeutralTextStyles>Ready to start?</NeutralTextStyles>
           <CustomButton buttonFunction={ navigateToCategoryOne } copyContent="Begin here" priority="primary" />
           <CustomButton buttonFunction={ navigateToFAQ } copyContent="FAQ" priority="secondary" />
+          <CustomButton buttonFunction={ logout } copyContent="Sign out" priority="secondary" />
         </View>
 
       </ViewStyles>

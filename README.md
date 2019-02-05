@@ -58,6 +58,8 @@ The purpose of this app is:
   - In the authentication section, go to the "Sign-in method" tab.
   - Enable anonymous authentication.
 
+- Always have the most up to date GoogleService-Info.plist
+
 ---
 
 ### React Native Firebase
@@ -69,9 +71,20 @@ The purpose of this app is:
 - Ensure an update to date GoogleService-Info.plist is installed at the correct location.
   - Location: ./ios/
 
-### Expo
+---
+
+### Expo && ExpoKit
 
 - As of 1/31/2019, npm only works with the following releases of Node.js:  4, 6, 7, 8, and 9.
+- When using `expo eject`, you will be developing with ExpoKit now.
+  - [ExpoKit Documentation](https://docs.expo.io/versions/latest/expokit/expokit/)
+- To build a detached project:
+  1. In xCode, select `Generic iOS device`
+  2. In your terminal, at the root of the project, run `expo publish`
+  3. in xCode, go to Product -> Archive
+
+- When the following bug occurs: `Empty ios/user/Supporting/shell-app-manifest.json file generates error while archiving`
+  - [Github Issue #1993](https://github.com/expo/expo/issues/1993)
 
 ---
 
