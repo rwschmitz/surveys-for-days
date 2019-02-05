@@ -82,9 +82,10 @@ The purpose of this app is:
   1. In xCode, select `Generic iOS device`
   2. In your terminal, at the root of the project, run `expo publish`
   3. in xCode, go to Product -> Archive
-
 - When the following bug occurs: `Empty ios/user/Supporting/shell-app-manifest.json file generates error while archiving`
   - [Github Issue #1993](https://github.com/expo/expo/issues/1993)
+- During devleopment, if the app has a timeout when using `expo start`, try running the app through the tunnel instead of LAN
+  - Use the command `expo start --tunnel`
 
 ---
 

@@ -21,17 +21,10 @@ const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
 
-  // constructor() {
-  //   super();
-  //   this.unsubscriber = null;
-  //   this.state = {
-  //     user: null,
-  //     email: '',
-  //     pw: '',
-  //     accountEmail: '',
-  //     accountPw: ''
-  //   };
-  // }
+  constructor() {
+    super();
+    this.ref = firebase.firestore().collection('users');
+  }
 
   state = {
     user: null,
@@ -40,6 +33,7 @@ class App extends React.Component {
     accountEmail: '',
     accountPw: ''
   }
+
 
   componentDidMount() {
     this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
@@ -55,6 +49,12 @@ class App extends React.Component {
 
   logout = () => {
     firebase.auth().signOut()
+  }
+
+  addUserEmail = () => {
+    this.ref.add({
+      email: firebase.auth().currentUser._user.email
+    })
   }
 
 
@@ -115,7 +115,8 @@ class App extends React.Component {
           screenProps={
             {
               currentUserEmail: currentUser.email,
-              logout: this.logout
+              logout: this.logout,
+              addUserEmail: this.addUserEmail
             }
           }
         />
