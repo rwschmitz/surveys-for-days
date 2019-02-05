@@ -21,11 +21,6 @@ const AppContainer = createAppContainer(AppNavigator);
 
 class App extends React.Component {
 
-  constructor() {
-    super();
-    this.ref = firebase.firestore().collection('users');
-  }
-
   state = {
     user: null,
     email: '',
@@ -34,8 +29,8 @@ class App extends React.Component {
     accountPw: ''
   }
 
-
   componentDidMount() {
+    this.firestoreUsers = firebase.firestore().collection('users');
     this.unsubscriber = firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user });
     });
@@ -51,12 +46,10 @@ class App extends React.Component {
     firebase.auth().signOut()
   }
 
-  addUserEmail = () => {
-    this.ref.add({
-      email: firebase.auth().currentUser._user.email
-    })
+  createAccountAndSetupUser = (email, pw) => {
+    firebase.auth().createUserWithEmailAndPassword(email, pw)
+    firebase.firestore().collection('users').doc(email).set();
   }
-
 
   render() {
     const { accountEmail, accountPw, email, pw, user } = this.state;
@@ -83,7 +76,7 @@ class App extends React.Component {
           </View>
           <Button
             title="create account"
-            onPress={ () => firebase.auth().createUserWithEmailAndPassword(email, pw) }
+            onPress={ () => this.createAccountAndSetupUser(email, pw) }
           />
           <View>
             <Text>login email:</Text>
@@ -114,9 +107,11 @@ class App extends React.Component {
         <AppContainer
           screenProps={
             {
+              addName: this.addName,
+              addUserByEmail: this.addUserByEmail,
+              addUserEmail: this.addUserEmail,
               currentUserEmail: currentUser.email,
               logout: this.logout,
-              addUserEmail: this.addUserEmail
             }
           }
         />

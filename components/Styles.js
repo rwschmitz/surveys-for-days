@@ -46,6 +46,7 @@ color: ${props => props.selectedColor};
 export const CustomButtonStyles = styled.TouchableOpacity`
 background-color: ${props => props.selectedBackgroundColor};
 border-radius: 8px;
+margin-bottom: 32px;
 padding-bottom: 8px;
 padding-left: 16px;
 padding-right: 16px;
