@@ -43,6 +43,7 @@ The purpose of this app is:
 - Deploy application through [App Store Connect](https://appstoreconnect.apple.com)
 - Application can also be upload via the Application Loader
   - [Stackoverflow 29741404](https://stackoverflow.com/questions/29741404/no-suitable-records-were-found-verify-your-bundle-identifier-is-correct)
+- A quick way to deploy to Testflight for internal testing is to uncheck the box for bitwise compilation.
 
 ---
 

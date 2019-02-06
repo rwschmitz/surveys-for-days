@@ -22,6 +22,7 @@ const AppContainer = createAppContainer(AppNavigator);
 class App extends React.Component {
 
   state = {
+    createdDisplayName: '',
     user: null,
     email: '',
     pw: '',
@@ -46,13 +47,45 @@ class App extends React.Component {
     firebase.auth().signOut()
   }
 
-  createAccountAndSetupUser = (email, pw) => {
-    firebase.auth().createUserWithEmailAndPassword(email, pw)
-    firebase.firestore().collection('users').doc(email).set();
+  createAccountAndSetupUser = (email, pw, createdDisplayName) => {
+    firebase.auth().createUserWithEmailAndPassword(email, pw).then((userCredentials) => {
+      if(userCredentials.user) {
+        userCredentials.user.updateProfile({
+          displayName: createdDisplayName
+        })
+      }
+    })
+    this.firestoreUsers.doc(email).set();
   }
 
+  fetchUserData = () => {
+    // console.log(firebase.auth().currentUser);
+    // const link = new firebase.links.DynamicLink('https://surveysfordays.page.link/apple-app-site-association', 'surveysfordays.page.link').ios.setBundleId('com.rudolphschmitz.surveysfordays');
+    const link = new firebase.links.DynamicLink('https://pnmg.com', 'surveysfordays.page.link').ios.setBundleId('com.rudolphschmitz.surveysfordays');
+
+    firebase.links()
+    .createDynamicLink(link)
+    .then((url) => {
+      console.log(url);
+    });
+    const docRef = this.firestoreUsers.doc(firebase.auth().currentUser._user.email);
+    docRef.get().then((doc) => {
+      if(doc.exists) {
+        // console.log('Document data:', doc.data());
+      } else {
+        // console.log('No such document');
+      }
+    }).catch((error) => {
+      // console.log('Error retriving document:', error);
+    });
+  }
+
+  // createInvitation = () => {
+  //
+  // }
+
   render() {
-    const { accountEmail, accountPw, email, pw, user } = this.state;
+    const { accountEmail, accountPw, createdDisplayName, email, pw, user } = this.state;
 
     // If the user has not authenticated
     if (!user) {
@@ -74,9 +107,17 @@ class App extends React.Component {
               value={pw}
             />
           </View>
+          <View>
+            <Text>create dipslay name:</Text>
+            <TextInput
+              style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 300}}
+              onChangeText={(createdDisplayName) => this.setState({createdDisplayName})}
+              value={createdDisplayName}
+            />
+          </View>
           <Button
             title="create account"
-            onPress={ () => this.createAccountAndSetupUser(email, pw) }
+            onPress={ () => this.createAccountAndSetupUser(email, pw, createdDisplayName) }
           />
           <View>
             <Text>login email:</Text>
@@ -101,7 +142,7 @@ class App extends React.Component {
         </ViewStyles>
       )
     }
-    const currentUser = firebase.auth().currentUser._user;
+    const currentUser = firebase.auth().currentUser;
     return (
       <React.Fragment>
         <AppContainer
@@ -110,7 +151,9 @@ class App extends React.Component {
               addName: this.addName,
               addUserByEmail: this.addUserByEmail,
               addUserEmail: this.addUserEmail,
+              currentUserDisplayName: currentUser.displayName,
               currentUserEmail: currentUser.email,
+              fetchUserData: this.fetchUserData,
               logout: this.logout,
             }
           }

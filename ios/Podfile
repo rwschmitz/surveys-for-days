@@ -5,6 +5,7 @@ target 'surveys-for-days' do
   pod 'Firebase/Core', '~> 5.15.0'
   pod 'Firebase/Auth', '~> 5.15.0'
   pod 'Firebase/Firestore', '~> 5.15.0'
+  pod 'Firebase/DynamicLinks', '~> 5.15.0'
   pod 'ExpoKit',
     :git => "http://github.com/expo/expo.git",
     :tag => "ios/2.10.2",
