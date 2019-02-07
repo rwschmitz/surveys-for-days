@@ -64,7 +64,7 @@ class App extends React.Component {
     const link = new firebase.links.DynamicLink('https://pnmg.com', 'surveysfordays.page.link').ios.setBundleId('com.rudolphschmitz.surveysfordays');
 
     firebase.links()
-    .createDynamicLink(link)
+    .createShortDynamicLink(link, 'SHORT')
     .then((url) => {
       console.log(url);
     });
