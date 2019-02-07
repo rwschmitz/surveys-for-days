@@ -71,6 +71,10 @@ The purpose of this app is:
 - After installing the necessary pods, **within xCode**, you need to be opening the `.xcworkspace` file instead of the `.xcproj` file.
 - Ensure an update to date GoogleService-Info.plist is installed at the correct location.
   - Location: ./ios/
+- If the error `Filename.h file not found` occurs, it's possible your xCode project isn't looking at your `node_modules` folder.
+  - [Github Issue #979, comment by leonelpena](https://github.com/invertase/react-native-firebase/issues/979#issuecomment-383919674)
+  - [React Native, manually linking libraries](https://facebook.github.io/react-native/docs/linking-libraries-ios#step-1-1)
+  - The library you're looking for is likely located at `../node_modules/react-native-firebase/ios/RNFirebase`
 
 ---
 
